@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Tech | Especialista em Software</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <p id="mensagem-saudacao"></p>
+        
+        <img src="p.png" alt="Minha Foto" class="foto-perfil">
+        
+        <h1>Hugo de Oliveira Souza</h1>
+        <p class="subtitulo">Sou especialista em <span id="texto-dinamico"></span></p>
+    </header>
+
+    <main>
+        <section>
+    <h2>Implementação de Ecossistemas</h2>
+    <p>Configuração e otimização de fluxos de trabalho em:</p>
+    <div class="filtros-container">
+    <button onclick="filtrar('todos')">✨ Todos</button>
+    <button onclick="filtrar('gestao')">📂 Gestão</button>
+    <button onclick="filtrar('saude')">🏥 Saúde</button>
+</div>
+
+<section class="item-servico gestao">
+    <h2>Implementação de Ecossistemas</h2>
+    <div class="tags">
+        <span>Notion</span> <span>Trello</span> <span>ClickUp</span>
+    </div>
+</section>
+
+<section class="item-servico saude">
+    <h2>Especialista em Saúde</h2>
+    <div class="tags">
+        <span>WebDiet</span> <span>SupportClinic</span>
+    </div>
+</section>
+
+<section class="item-servico gestao">
+    <h2>Desenvolvimento de Soluções</h2>
+    <ul>
+        <li>Automação de processos</li>
+        <li>Landing Pages</li>
+    </ul>
+</section>
+
+            <section class="contato">
+    <h2>Vamos profissionalizar o seu negócio?</h2>
+    <a href="https://wa.me/5541987229901?text=Olá%20Hugo!%20Vi%20seu%20site%20e%20gostaria%20de%20um%20orçamento%20para%20configuração%20de%20software." 
+       target="_blank" 
+       class="btn-whatsapp">
+        <button><i class="fa-brands fa-whatsapp"></i> Solicitar Orçamento no WhatsApp</button>
+    </a>
+        </section>
+
+        <section class="calculadora">
+    <h2>Calculadora de Impacto</h2>
+    <p>Quantas horas você gasta por semana com tarefas manuais?</p>
+    <div style="display: flex; gap: 10px; margin: 15px 0;">
+        <input type="number" id="horas-manuais" placeholder="Ex: 10" style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+        <button onclick="calcularEconomia()" style="width: auto; padding: 0 20px;">Calcular</button>
+    </div>
+    <div id="resultado-calc" style="display: none; background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; font-weight: bold;">
+        <p id="msg-economia"></p>
+    </div>
+    
+</section>
+
+<section class="item-servico">
+    <div class="badge-estudo">Projeto de Estudo</div>
+    <h2>HealthTech - Landing Page</h2>
+    <p>Projeto desenvolvido para praticar <strong>Design Responsivo</strong> e <strong>Manipulação de Grid</strong>. Focado no nicho de saúde e clínicas.</p>
+    
+    <div class="links-projeto">
+        <a href="https://hugooliveira1012.github.io/projeto-saude/" target="_blank">👁️ Visualizar Demo</a>
+        <a href="https://github.com/HugoOliveira1012/projeto-saude" target="_blank">💻 Ver Código</a>
+    </div>
+</section>
+    </main>
+
+    <script src="script.js"></script>
+    <footer>
+    <div class="redes-sociais">
+        <a href="https://linkedin.com/in/hugooliveira1012" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://instagram.com/hugoo1012" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:hugoooliveira123@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+    <p>&copy; 2026 Hugo Oliveira - Especialista em Ecossistemas Digitais</p>
+    <p class="ads-tag">Análise e Desenvolvimento de Sistemas</p>
+</footer>
+<script>
+    const texto = document.getElementById("texto-dinamico");
+    const frases = ["Notion", "Ecossistemas Digitais", "ClickUp", "WebDiet", "Soluções Web"];
+    let i = 0, j = 0, atual = "", deletando = false;
+
+    function escrever() {
+        const fraseFull = frases[i];
+        if (deletando) {
+            atual = fraseFull.substring(0, j--);
+        } else {
+            atual = fraseFull.substring(0, j++);
+        }
+        texto.innerHTML = atual + "|";
+
+        let velocidade = deletando ? 50 : 100;
+        if (!deletando && j === fraseFull.length + 1) {
+            velocidade = 2000; deletando = true;
+        } else if (deletando && j === 0) {
+            deletando = false; i = (i + 1) % frases.length;
+        }
+        setTimeout(escrever, velocidade);
+    }
+    escrever();
+</script>
+</body>
+</html>
